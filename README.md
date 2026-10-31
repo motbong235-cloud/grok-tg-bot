@@ -1,17 +1,22 @@
 # Porpor Fix AI (Grok Telegram)
 
-Telegram AI focused **only** on **Porpor Topup** maintenance & fixes.
+AI for **Porpor Topup** maintenance — **text + image vision**.
 
 ## Env
-- `TELEGRAM_BOT_TOKEN` — BotFather
-- `XAI_API_KEY` — console.x.ai
-- `GROK_MODEL` — grok-3 (default)
-- `BOT_NAME` — Porpor Fix AI
-- `SYSTEM_PROMPT` — optional override
+| Key | Required | Notes |
+|-----|----------|--------|
+| TELEGRAM_BOT_TOKEN | yes | BotFather |
+| XAI_API_KEY | yes | console.x.ai |
+| GROK_MODEL | no | default `grok-3` |
+| GROK_VISION_MODEL | no | default `grok-2-vision-1212` |
+| BOT_NAME | no | Porpor Fix AI |
 
-## Scope
-- Porpor Topup UI/UX, payment KHQR/ABA, admin, Render deploy
-- Advises fixes; **code push to repo** is done from Grok chat / CI after approval
+## Features
+- Chat text (Grok)
+- **Screenshot / photo** → Grok Vision analyzes UI bugs
+- Memory per user
+- Scope: Porpor Topup only
 
-Repo bot: this repo  
-Target site repo: `motbong235-cloud/porpor-topup`
+## Deploy Render
+build: `pip install -r requirements.txt`  
+start: `python bot.py`
