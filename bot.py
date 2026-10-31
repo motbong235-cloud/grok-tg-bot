@@ -30,15 +30,33 @@ log = logging.getLogger("grok-bot")
 TOKEN = (os.getenv("TELEGRAM_BOT_TOKEN") or os.getenv("BOT_TOKEN") or "").strip()
 XAI_KEY = (os.getenv("XAI_API_KEY") or os.getenv("GROK_API_KEY") or "").strip()
 MODEL = (os.getenv("GROK_MODEL") or "grok-3").strip()
-BOT_NAME = (os.getenv("BOT_NAME") or "Grok Assistant").strip()
+BOT_NAME = (os.getenv("BOT_NAME") or "Porpor Fix AI").strip()
 ADMIN_ID = int(os.getenv("ADMIN_ID") or "0")
 MAX_HISTORY = int(os.getenv("MAX_HISTORY") or "12")
 XAI_URL = (os.getenv("XAI_API_URL") or "https://api.x.ai/v1/chat/completions").strip()
 
-DEFAULT_SYSTEM = """អ្នកជា AI assistant ឈ្មោះ {name} ផ្អែកលើ Grok (xAI)។
-ឆ្លើយភាសាខ្មែរ បើអ្នកប្រើសរសេរខ្មែរ។ ឆ្លើយភាសាអង់គ្លេស បើគេសរសេរអង់គ្លេស។
-ជួយដោយស្មោះត្រង់ ខ្លីច្បាស់ មានប្រយោជន៍។ កុំបង្កើតព័ត៌មានមិនពិត។
-បើសំណួរអំពី top-up / payment / order — ណែនាំឲ្យទាក់ទង admin របស់ហាង។""".format(
+DEFAULT_SYSTEM = """អ្នកជា AI Maintenance Assistant សម្រាប់គម្រោង **Porpor Topup** តែប៉ុណ្ណោះ។
+ឈ្មោះ: {name} · Powered by Grok (xAI).
+
+## តួនាទី
+- ផ្តោតតែការថែទាំ / fix / កែ UI·UX / payment (ABA PayWay·KHQR) / admin / deploy Render នៃ Porpor Topup
+- Repo: github.com/motbong235-cloud/porpor-topup
+- Live: porportopup.com · Admin path /pp-console
+- កុំនិយាយអំពីគម្រោងផ្សេង (REX, Kai bot, ។ល។) លុះតែអ្នកប្រើសួរច្បាស់
+
+## របៀបឆ្លើយ
+- ភាសាខ្មែរ បើគេសរសេរខ្មែរ · អង់គ្លេស បើគេសរសេរអង់គ្លេស
+- ខ្លី ច្បាស់ · ជំហាន fix លេខ 1,2,3
+- បើត្រូវកែកូដ: ប្រាប់ file / ផ្នែកដែលត្រូវប្តូរ · និងថា «សុំ Grok chat ធ្វើ commit + push ទៅ repo porpor-topup»
+- កុំបន្លំថាអ្នក push GitHub បានដោយខ្លួនឯងពី Telegram — ការផ្លាស់កូដពិតធ្វើតាម Grok chat / CI
+
+## បច្ចេកទេស Porpor (សង្ខេប)
+- Stack: React + Express · payment Khmer System បង្ហាញឈ្មោះ ABA PayWay
+- Admin private URL · token/password
+- Live chat, stock services, Telegram login, order → channel notify
+- Render deploy · starter plan
+
+ជួយ debug error log, UI, QR fail, admin 404, build fail — តែក្នុងវិសាលភាព Porpor Topup។""".format(
     name=BOT_NAME
 )
 
@@ -111,10 +129,12 @@ def cmd_start(message: types.Message):
     bot.send_message(
         message.chat.id,
         f"សួស្តី <b>{name}</b> 👋\n"
-        f"ខ្ញុំ <b>{BOT_NAME}</b> — AI ដោយ <b>Grok (xAI)</b>\n\n"
-        f"សរសេរអ្វីក៏បាន — ខ្ញុំនឹងឆ្លើយ។\n"
+        f"ខ្ញុំ <b>{BOT_NAME}</b> — AI ថែទាំ <b>Porpor Topup</b>\n"
+        f"(Grok · xAI)\n\n"
+        f"ផ្ញើ bug / error / screenshot — ខ្ញុំវិភាគ និងណែនាំ fix។\n"
+        f"កែកូដ + <b>push repo</b>: តាម Grok chat (auto upload ពេលរួច)\n\n"
         f"· /clear — លុប memory\n"
-        f"· /about — ព័ត៌មាន bot\n\n"
+        f"· /about — ព័ត៌មាន\n"
         f"<i>Model: {MODEL}</i>",
         reply_markup=main_kb(),
     )

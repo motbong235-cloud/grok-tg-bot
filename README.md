@@ -1,21 +1,17 @@
-# Grok AI Telegram Bot
+# Porpor Fix AI (Grok Telegram)
 
-Telegram bot powered by **xAI Grok API**.
+Telegram AI focused **only** on **Porpor Topup** maintenance & fixes.
 
 ## Env
-- `TELEGRAM_BOT_TOKEN` — from @BotFather
-- `XAI_API_KEY` — from https://console.x.ai
-- `GROK_MODEL` — default `grok-3` (or `grok-2`, `grok-3-mini`)
-- `SYSTEM_PROMPT` — optional custom personality (Khmer/English)
-- `ADMIN_ID` — optional Telegram user id
+- `TELEGRAM_BOT_TOKEN` — BotFather
+- `XAI_API_KEY` — console.x.ai
+- `GROK_MODEL` — grok-3 (default)
+- `BOT_NAME` — Porpor Fix AI
+- `SYSTEM_PROMPT` — optional override
 
-## Local
-```bash
-pip install -r requirements.txt
-export TELEGRAM_BOT_TOKEN=...
-export XAI_API_KEY=...
-python bot.py
-```
+## Scope
+- Porpor Topup UI/UX, payment KHQR/ABA, admin, Render deploy
+- Advises fixes; **code push to repo** is done from Grok chat / CI after approval
 
-## Render
-Web service · start `python bot.py` · set env vars above.
+Repo bot: this repo  
+Target site repo: `motbong235-cloud/porpor-topup`
